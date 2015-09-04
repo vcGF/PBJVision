@@ -61,6 +61,8 @@ static NSString * const PBJVisionCaptureStillImageIsCapturingStillImageObserverC
 // additional video capture keys
 
 NSString * const PBJVisionVideoRotation = @"PBJVisionVideoRotation";
+NSString * const PBJVisionVideoWidth = @"PBJVisionVideoWidth";
+NSString * const PBJVisionVideoHeight = @"PBJVisionVideoHeight";
 
 // photo dictionary key definitions
 
@@ -2120,6 +2122,13 @@ typedef void (^PBJVisionBlock)();
     } else {
         compressionSettings = @{ AVVideoAverageBitRateKey : @(_videoBitRate),
                                  AVVideoMaxKeyFrameIntervalKey : @(_videoFrameRate) };
+    }
+    
+    if ([self additionalVideoProperties]) {
+        if ([self additionalVideoProperties][PBJVisionVideoWidth] && [self additionalVideoProperties][PBJVisionVideoHeight]) {
+            videoDimensions.width = [[self additionalVideoProperties][PBJVisionVideoWidth] intValue];
+            videoDimensions.height = [[self additionalVideoProperties][PBJVisionVideoHeight] intValue];
+        }
     }
     
 	NSDictionary *videoSettings = @{ AVVideoCodecKey : AVVideoCodecH264,

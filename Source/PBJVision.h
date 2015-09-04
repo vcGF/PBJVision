@@ -108,6 +108,8 @@ typedef NS_ENUM(NSInteger, PBJVisionErrorType)
 // additional video capture keys
 
 extern NSString * const PBJVisionVideoRotation;
+extern NSString * const PBJVisionVideoWidth;
+extern NSString * const PBJVisionVideoHeight;
 
 // photo dictionary keys
 
