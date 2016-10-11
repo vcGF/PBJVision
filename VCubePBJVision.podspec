@@ -6,7 +6,7 @@ Pod::Spec.new do |s|
   s.social_media_url = 'http://twitter.com/piemonte'
   s.license = 'MIT'
   s.authors = { 'patrick piemonte' => 'piemonte@alumni.cmu.edu' }
-s.source = { :git => 'https://github.com/vcGF/PBJVision.git', :branch => 'sub-podspec', :tag => 'v0.4.5’ }
+s.source = { :git => 'https://github.com/vcGF/PBJVision.git', :branch => 'sub-podspec', :tag => 'v0.4.5'}
   s.frameworks = 'Foundation', 'AVFoundation', 'CoreGraphics', 'CoreMedia', 'CoreVideo', 'CoreImage', 'MobileCoreServices', 'ImageIO', 'QuartzCore', 'OpenGLES', 'UIKit'
   s.platform = :ios, '7.0'
   s.source_files = 'Source'
