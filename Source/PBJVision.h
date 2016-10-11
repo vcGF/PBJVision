@@ -142,6 +142,10 @@ static CGFloat const PBJVideoBitRate1280x750 = 5000000 * 8;
 
 @property (nonatomic, weak, nullable) id<PBJVisionDelegate> delegate;
 
+//GUY for interruptions split view / slide over
+@property (strong, nonatomic)id lastReasonForInterruption;
+//
+
 // session
 
 @property (nonatomic, readonly, getter=isCaptureSessionActive) BOOL captureSessionActive;
@@ -247,6 +251,9 @@ static CGFloat const PBJVideoBitRate1280x750 = 5000000 * 8;
 - (void)captureCurrentVideoThumbnail;
 - (void)captureVideoThumbnailAtFrame:(int64_t)frame;
 - (void)captureVideoThumbnailAtTime:(Float64)seconds;
+
+
+
 
 @end
 

@@ -184,6 +184,8 @@ typedef NS_ENUM(GLint, PBJVisionUniformLocationTypes)
         unsigned int defaultVideoThumbnails:1;
         unsigned int videoCaptureFrame:1;
     } __block _flags;
+    
+    
 }
 
 @property (nonatomic) AVCaptureDevice *currentDevice;
@@ -217,6 +219,7 @@ typedef NS_ENUM(GLint, PBJVisionUniformLocationTypes)
 @synthesize additionalCompressionProperties = _additionalCompressionProperties;
 @synthesize additionalVideoProperties = _additionalVideoProperties;
 @synthesize maximumCaptureDuration = _maximumCaptureDuration;
+@synthesize lastReasonForInterruption;
 
 #pragma mark - singleton
 
@@ -2403,6 +2406,10 @@ typedef void (^PBJVisionBlock)();
 
 - (void)_sessionWasInterrupted:(NSNotification *)notification
 {
+    //GUY
+    self.lastReasonForInterruption = notification.userInfo[AVCaptureSessionInterruptionReasonKey];
+    //
+        
     [self _enqueueBlockOnMainQueue:^{
         if ([notification object] != _captureSession)
             return;
