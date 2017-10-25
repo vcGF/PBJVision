@@ -1076,7 +1076,13 @@ typedef void (^PBJVisionBlock)();
         // setup video stabilization, if available
         if ([videoConnection isVideoStabilizationSupported]) {
             if ([videoConnection respondsToSelector:@selector(setPreferredVideoStabilizationMode:)]) {
-                [videoConnection setPreferredVideoStabilizationMode:AVCaptureVideoStabilizationModeAuto];
+                //https://forums.developer.apple.com/thread/86924
+                //VG-4832
+                if (@available(iOS 11.0, *)) {
+                    [videoConnection setPreferredVideoStabilizationMode:AVCaptureVideoStabilizationModeStandard];
+                } else {
+                    [videoConnection setPreferredVideoStabilizationMode:AVCaptureVideoStabilizationModeAuto];
+                }
             } else {
                 [videoConnection setEnablesVideoStabilizationWhenAvailable:YES];
             }
